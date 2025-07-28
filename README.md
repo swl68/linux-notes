@@ -6,7 +6,7 @@
 ```kubectl exec -n NAMESPACE NAME_POD -- ls -la /```
 
 # Скопировать файл с рабочей машины в контейнер:
-```kubectl cp index.php -n NAMESPACE NAME_POD:/var/www/dokuwiki/data/ -c CONTAINER_NAME```
+```kubectl cp index.php -n NAMESPACE NAME_POD:/var/www/dokuwiki/ -c CONTAINER_NAME```
 
 # Просмотра подов контроллера в определенном пространстве имен: 
 ```kubectl get pods -n NAMESPACE -o wide```
