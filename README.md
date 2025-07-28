@@ -29,6 +29,9 @@
 # Изменить кол-во реплик, в данном случае остановить все экземпляры:
 ```kubectl scale deployments -n NAMESPACE NAME --replicas=0```
 
+# Удалить конкретный pod:
+```kubectl delete pod -n NAMESPACE POD_NAME --now```
+
 # Запуск с точкой монитрования: 
 ```kubectl run -it --rm giteaforbkp --overrides=```'
 {
