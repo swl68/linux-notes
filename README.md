@@ -11,6 +11,12 @@
 # Просмотра подов контроллера в определенном пространстве имен: 
 ```kubectl get pods -n NAMESPACE -o wide```
 
+# Просмотр логов:
+```kubetl logs -p POD_NAME -c CONTAINER_NAME```
+
+# Показать последние 20 строк вывода журнала ищ выбранного пода:
+```kubectl logs --tail=20 -p POD_NAME -c CONTAINER_NAME```
+
 # Просмотр сервисов в пространстве имен:
 ```kubectl get service -n NAMESPACE```
 
