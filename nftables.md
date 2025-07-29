@@ -25,7 +25,7 @@ table ip FILTER {
 chain INPUT {
 type filter hook input priority filter; policy accept;
 iifname "lo" counter accept
-ip saddr 77.50.100.0/24 tcp dport { 22, 80, 5000, 5001 } counter accept
+ip saddr 10.50.100.0/24 tcp dport { 22, 80, 5000, 5001 } counter accept
 ip saddr 192.168.194.0/24 tcp dport { 22 } counter accept
 icmp type echo-request limit rate 5/second accept
 ct state established,related counter accept
