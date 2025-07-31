@@ -5,6 +5,15 @@ DaemonSet, когда требуется, чтобы функции работа
 StatefulSet, для работы приложений, которые нужнаются в сохранении своего состояния, например, базы данных;
 Deployment - подходит для остального, он порождает Replicaset, который уже создает pod`ы.
 
+# Проверить рабочие ноды их состояние, роль, ядро, ос и адреса:
+```kubectl get nodes -o wide```
+
+# Проверить поды в deployments:
+```kubectl get deployments -A -o wide```
+
+# Проверить поды в statefulset:
+```kubectl get statefulset -A -o wide```
+
 # Подключение к терминалу кубпода:
 ```kubectl exec -it -n NAMESPACE NAME_POD -с CONTAINER_NAME -- /bin/sh```
 
@@ -18,7 +27,7 @@ Deployment - подходит для остального, он порождае
 ```kubectl get pods -n NAMESPACE -o wide```
 
 # Просмотр логов:
-```kubetl logs -p POD_NAME -c CONTAINER_NAME```
+```kubetl logs -n NAMESPACE POD_NAME```
 
 # Показать последние 20 строк вывода журнала ищ выбранного пода:
 ```kubectl logs --tail=20 -p POD_NAME -c CONTAINER_NAME```
