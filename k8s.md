@@ -1,4 +1,10 @@
 # k8s notes
+
+# Состояния: DaemonSet, StatefulSet и Deployment:
+DaemonSet, когда требуется, чтобы функции работали на всех узлах кластера.
+StatefulSet, для работы приложений, которые нужнаются в сохранении своего состояния, например, базы данных.
+Deployment - подходит для остального, он порождает Replicaset, который уже создает pod`ы.
+
 # Подключение к терминалу кубпода:
 ```kubectl exec -it -n NAMESPACE NAME_POD -с CONTAINER_NAME -- /bin/sh```
 
@@ -32,8 +38,11 @@
 # Подробный вывод деплоя в пространстве имен:
 ```kubectl get deployments -n NAMESPACE -o wide```
 
-# Изменить кол-во реплик, в данном случае остановить все экземпляры:
+# Изменить кол-во реплик в deploy, данном случае остановить все экземпляры:
 ```kubectl scale deployments -n NAMESPACE NAME --replicas=0```
+
+# Изменить кол-во реплик в stateful
+```kubectl scale statefulset -n NAMESPACE NAME --replicas=0```
 
 # Удалить конкретный pod:
 ```kubectl delete pod -n NAMESPACE POD_NAME --now```
