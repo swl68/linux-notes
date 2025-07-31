@@ -20,6 +20,12 @@ Deployment - подходит для остального, он порождае
 # Выполнить команду внутри кубпода:
 ```kubectl exec -n NAMESPACE NAME_POD -- ls -la /```
 
+# Проверить события в подах в прострастве имен:
+```kubectl get events -n NAMESPACE```
+
+# Проверить события в подах в прострастве имен и расширенно:
+```kubectl get events -A -o wide```
+
 # Скопировать файл с рабочей машины в контейнер:
 ```kubectl cp index.php -n NAMESPACE NAME_POD:/var/www/dokuwiki/ -c CONTAINER_NAME```
 
