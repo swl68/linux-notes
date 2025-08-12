@@ -1,26 +1,28 @@
 # Подготовка
-Устанавливаем venv если отсуствует:
+Устанавливаем venv если отсуствует:\\
 ```sudo apt install python3-venv```
-Создаем директорию с окружением:
+Создаем директорию с окружением:\\
 ```sudo python3 -m venv /opt/certbot/```
-Обновляем pip:
+Обновляем pip:\\
 ```sudo /opt/certbot/bin/pip install --upgrade pip```
 
 # Установка 
-Установка certbot через pip:
+Установка certbot через pip:\\
 ```sudo /opt/certbot/bin/pip install certbot```
 
-Делаем короткую ссылку:
+Делаем короткую ссылку:\\
 ```sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot```
 
-===== Дериктивы certbot =====
+# Обновление 
+ TODO
+# Дериктивы certbot 
 
-Позволит выполнить тестовый запуск команды:
---dry-run - напрмиер если ошибок нет в выводе, значит все в порядке, ```certbot renew --dry-run```
+--dry-run - позволит выполнить тестовый запуск команды если ошибок нет в выводе, значит все в порядке:\\
+```certbot renew --dry-run```
 
-1. Режим при котором требуется вручную останавливать Ваш сервер (освобождать 80 порт):
+--standalone - режим при котором требуется вручную останавливать Ваш сервер (освобождать 80 порт):\\
 
-  ```sudo certbot certonly --standalone```
+```sudo certbot certonly --standalone```
   
 2. Режим при котором возможность остановки сервера отсуствует:
 При таком режиме сервер должен быть готов ответить на запрос ```curl your_host.ru/.well-known/acme-challenge```
