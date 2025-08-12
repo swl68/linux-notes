@@ -1,9 +1,9 @@
 # Подготовка
 Устанавливаем venv если отсуствует: \
-```sudo apt install python3-venv```
+```sudo apt install python3-venv``` \
 Создаем директорию с окружением: \
-```sudo python3 -m venv /opt/certbot/```
-Обновляем pip:\\
+```sudo python3 -m venv /opt/certbot/``` \
+Обновляем pip: \
 ```sudo /opt/certbot/bin/pip install --upgrade pip```
 
 # Установка 
