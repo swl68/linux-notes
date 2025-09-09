@@ -55,6 +55,11 @@ Unit=cert-bot-update.service
 WantedBy=timers.target
 EOF
 ```
+Для перечитывания unit файлов:
+```sudo systemctl daemon reload```
+Для добавления в автозагрузку и запуск службы:
+```sudo systemctl enable --now cert-bot-update.timer```
+
 <!--Дериктивы certbot-->
 ## Дириктивы certbot 
 --dry-run - позволит выполнить тестовый запуск команды если ошибок нет в выводе, значит все в порядке: 
