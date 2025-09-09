@@ -13,8 +13,55 @@
 Делаем короткую ссылку: \
 ```sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot```
 
-# Обновление 
- TODO
+# Получение сертификата
+--dry-run для проверки наличия ошибок, без получения сертификата
+sudo certbot certonly \
+    --dry-run \
+    --standalone \
+    --pre-hook "systemctl stop nginx.service" \
+    -d domain \
+    -m mail \
+    --post-hook "systemctl start nginx.service"
+
+Если ошибок нет, можно пробовать без --dry-run
+sudo certbot certonly \
+    --standalone \
+    --pre-hook "systemctl stop nginx.service" \
+    -d domain \
+    -m mail \
+    --post-hook "systemctl start nginx.service"
+    
+
+# Обновление сертификата
+ВЖАНО! Обновление можно произвести только если получение сертификата делалось таким же способом и на той же машине.
+Так же сначала тест
+ sudo certbot renew --dry-run
+ Если все хорошо делаем unit .service и .timer для автоматического продления
+ 
+ sudo tee /etc/systemd/system/cert-bot-update.service << EOF
+[Unit]
+Description=Auto update ssl certs by Certbot
+Documentation=file:///usr/share/doc/python-certbot-doc/html/index.html
+Documentation=https://certbot.eff.org/docs
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/certbot --quiet renew
+EOF
+
+Таймер, который запускает проверку каждую ночь в 01:00
+sudo tee /etc/systemd/system/cert-bot-update.timer << EOF
+[Unit]
+Description=Run certbot daily
+
+[Timer]
+OnCalendar=*-*-* 01:00:00
+Persistent=true
+Unit=cert-bot-update.service
+
+[Install]
+WantedBy=timers.target
+EOF
+
 # Дериктивы certbot 
 
 1. --dry-run - позволит выполнить тестовый запуск команды если ошибок нет в выводе, значит все в порядке: \
