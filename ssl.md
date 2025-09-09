@@ -55,21 +55,20 @@ Unit=cert-bot-update.service
 WantedBy=timers.target
 EOF
 ```
-Для перечитывания unit файлов:
+Для перечитывания unit файлов: \
 ```sudo systemctl daemon reload```
-Для добавления в автозагрузку и запуск службы:
+Для добавления в автозагрузку и запуск службы: \
 ```sudo systemctl enable --now cert-bot-update.timer```
-
 <!--Дериктивы certbot-->
 ## Дириктивы certbot 
---dry-run - позволит выполнить тестовый запуск команды если ошибок нет в выводе, значит все в порядке: 
-```certbot renew --dry-run```
+--dry-run - позволит выполнить тестовый запуск команды если ошибок нет в выводе, значит все в порядке: \
+```certbot renew --dry-run``` \
 --standalone - режим при котором требуется вручную останавливать Ваш сервер (освобождать 80 порт): \
-```sudo certbot certonly --standalone```
-Режим при котором возможность остановки сервера отсуствует:\
-При таком режиме сервер должен быть готов ответить на запрос\
-```curl your_host.ru/.well-known/acme-challenge```
-nginx или apache нужно настроить location на этот путь.
-```sudo certbot certonly --webroot```
-Режим полностью ручной с поэтопным выводом происходящего:\
-```sudo certbot certonly --manual```
+```sudo certbot certonly --standalone``` \
+Режим при котором возможность остановки сервера отсуствует: \
+При таком режиме сервер должен быть готов ответить на запрос \
+```curl your_host.ru/.well-known/acme-challenge``` \
+nginx или apache нужно настроить location на этот путь. \
+```sudo certbot certonly --webroot``` \
+Режим полностью ручной с поэтопным выводом происходящего: \
+```sudo certbot certonly --manual``` \
