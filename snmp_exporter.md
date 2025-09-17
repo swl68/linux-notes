@@ -49,6 +49,9 @@ WantedBy=multi-user.target
 EOF
 ```
 
+## TODO
+Наполнение файла '/etc/snmp_exporter/snmp.yaml'
+
 Перечитываем unit файлы, добавляем в автозагрузку и запускаем службу:
 ```
 sudo systemctl daemon reload
