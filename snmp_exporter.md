@@ -8,14 +8,14 @@ wget https://github.com/prometheus/snmp_exporter/releases/tag/v0.29.0
 ```
 
 Распаковываем:
-
 ```
 tar -xzf snmp_exporter
 ```
 
 Копируем бинарь:
-
+```
 sudo cp snmp_exporter /usr/local/bin/
+```
 
 Создаем директорию для конфигурации:
 ```
@@ -23,6 +23,7 @@ sudo mkdir /etc/snmp_exporter/
 ```
 
 Создаем системного пользователя для службы:
+
 ```
 sudo useradd --system --no-create-home --shell /bin/false snmp_exporter
 ```
@@ -32,7 +33,6 @@ sudo chown snmp_exporter:snmp_exporter /usr/local/bin/snmp_exporter
 ```
 
 Файл для создания службы:
-
 ```
 sudo tee /etc/systemd/system/snmp_exporter.service << EOF
 [Unit]
@@ -50,16 +50,12 @@ EOF
 ```
 
 Перечитываем unit файлы, добавляем в автозагрузку и запускаем службу:
-
-
 ```
 sudo systemctl daemon reload
-
 sudo systemctl enable --now snmp_exporter.service
 ```
 
 Далее на сервере prometheus добавляем раздел в главный конфигурационный файл /etc/prometheus/prometheus.yaml:
-
 ```
 scrape_configs:
   - job_name: 'snmp'
