@@ -1,10 +1,10 @@
 ## Snmp exporter для prometheus
 
-1. Забираем с репозитория нужную версию:
+Забираем с репозитория нужную версию:
 ```
-git clone https://github.com/prometheus/snmp_exporter.git
-or
 wget https://github.com/prometheus/snmp_exporter/releases/tag/v0.29.0
+или последнюю через git
+git clone https://github.com/prometheus/snmp_exporter.git
 ```
 
 Распаковываем:
