@@ -94,4 +94,4 @@ kubectl run -it --rm giteaforbkp --overrides='
   }
 }
 '
---image=gitea:1.22.3-rootless -n gitea --restart=Never -- /bin/sh```
+--image=gitea:1.22.3-rootless -n gitea --restart=Never -- /bin/sh
