@@ -62,7 +62,7 @@ Deployment - подходит для остального, он порождае
 Удалить конкретный pod: \
 ```kubectl delete pod -n NAMESPACE POD_NAME --now```
 
-Запуск с точкой монитрования: \
+Запуск с точкой монитрования и удалением после остановки:
 ```
 kubectl run -it --rm giteaforbkp --overrides='
 {
