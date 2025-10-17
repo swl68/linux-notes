@@ -1,69 +1,70 @@
-# k8s notes
+## k8s notes
 
-# Состояния: DaemonSet, StatefulSet и Deployment:
+Состояния: DaemonSet, StatefulSet и Deployment:
 DaemonSet, когда требуется, чтобы функции работали на всех узлах кластера;
 StatefulSet, для работы приложений, которые нужнаются в сохранении своего состояния, например, базы данных;
 Deployment - подходит для остального, он порождает Replicaset, который уже создает pod`ы.
 
-# Проверить рабочие ноды их состояние, роль, ядро, ос и адреса:
+Проверить рабочие ноды их состояние, роль, ядро, ос и адреса: \
 ```kubectl get nodes -o wide```
 
-# Проверить поды в deployments:
+Проверить поды в deployments: \
 ```kubectl get deployments -A -o wide```
 
-# Проверить поды в statefulset:
+Проверить поды в statefulset: \
 ```kubectl get statefulset -A -o wide```
 
-# Подключение к терминалу кубпода:
+Подключение к терминалу кубпода: \
 ```kubectl exec -it -n NAMESPACE NAME_POD -с CONTAINER_NAME -- /bin/sh```
 
-# Выполнить команду внутри кубпода:
+Выполнить команду внутри кубпода: \
 ```kubectl exec -n NAMESPACE NAME_POD -- ls -la /```
 
-# Проверить события в подах в прострастве имен:
+Проверить события в подах в прострастве имен: \
 ```kubectl get events -n NAMESPACE```
 
-# Проверить события в подах в прострастве имен и расширенно:
+Проверить события в подах в прострастве имен и расширенно: \
 ```kubectl get events -A -o wide```
 
-# Скопировать файл с рабочей машины в контейнер:
+Скопировать файл с рабочей машины в контейнер: \
 ```kubectl cp index.php -n NAMESPACE NAME_POD:/var/www/dokuwiki/ -c CONTAINER_NAME```
 
-# Просмотра подов контроллера в определенном пространстве имен: 
+Просмотра подов контроллера в определенном пространстве имен: \ 
 ```kubectl get pods -n NAMESPACE -o wide```
 
-# Просмотр логов:
+Просмотр логов: \
 ```kubetl logs -n NAMESPACE POD_NAME```
 
-# Показать последние 20 строк вывода журнала ищ выбранного пода:
+Показать последние 20 строк вывода журнала ищ выбранного пода: \
 ```kubectl logs --tail=20 -p POD_NAME -c CONTAINER_NAME```
 
-# Просмотр сервисов в пространстве имен:
+Просмотр сервисов в пространстве имен: \
 ```kubectl get service -n NAMESPACE```
 
-# Подробное описание сервиса:
+Подробное описание сервиса: \
 ```kubectl describe service -n NAMESPACE```
 
-# Подробное описание пода:
+Подробное описание пода: \
 ```kubectl describe pods -n NAMESPACE```
 
-# Частичный запуск контенера, только с заданными командами:
+Частичный запуск контенера, только с заданными командами: \
 ```kubectl run -it gitea --image=gitea```
 
-# Подробный вывод деплоя в пространстве имен:
+Подробный вывод деплоя в пространстве имен: \
 ```kubectl get deployments -n NAMESPACE -o wide```
 
-# Изменить кол-во реплик в deploy, данном случае остановить все экземпляры:
+Изменить кол-во реплик в deploy, данном случае остановить все экземпляры: \
 ```kubectl scale deployments -n NAMESPACE NAME --replicas=0```
 
-# Изменить кол-во реплик в stateful
+Изменить кол-во реплик в stateful: \
 ```kubectl scale statefulset -n NAMESPACE NAME --replicas=0```
 
-# Удалить конкретный pod:
+Удалить конкретный pod: \
 ```kubectl delete pod -n NAMESPACE POD_NAME --now```
 
-# Запуск с точкой монитрования: 
-```kubectl run -it --rm giteaforbkp --overrides=```'
+Запуск с точкой монитрования: \
+```
+kubectl run -it --rm giteaforbkp --overrides='
 {
   "apiVersion": "v1",
   "spec": {
@@ -92,4 +93,5 @@ Deployment - подходит для остального, он порождае
     }]
   }
 }
-'```  --image=gitea:1.22.3-rootless -n gitea --restart=Never -- /bin/sh```
+'
+--image=gitea:1.22.3-rootless -n gitea --restart=Never -- /bin/sh```
