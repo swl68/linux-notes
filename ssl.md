@@ -11,7 +11,7 @@
 Установка certbot через pip: \
 ```sudo /opt/certbot/bin/pip install certbot``` \
 Делаем короткую ссылку: \
-```sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot```
+```sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot``` \
 Документация: \
 ```certbot -h all```
 <!--Получение сертификата-->
