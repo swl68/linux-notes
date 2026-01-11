@@ -1,4 +1,4 @@
-# Запуск gitea_runner podman
+## Запуск gitea_runner podman
 ```
 podman pod create --name gitea_runner -p 8088:8088 && \
 podman run -it \
@@ -13,7 +13,7 @@ podman run -it \
 gitea/act_runner:nightly
 ```
 
-# Для временного запуска, удаляется после остановки:
+## Для временного запуска, удаляется после остановки:
 ```
 podman run -it --rm --name=temp \
 	-e MYSQL_ROOT_PASSWORD=123 \
@@ -22,8 +22,8 @@ podman run -it --rm --name=temp \
 	-p 3306:3306 mysql:latest
 ```
 
-# Сгенерировать yaml для k8s на основе пода:
+## Сгенерировать yaml для k8s на основе пода:
 ```podman generate kube starlink-wiki >> starlink-wiki.yaml```
 
-# Запустить под из файла манифеста:
+## Запустить под из файла манифеста:
 ```podman play kube starlink-wiki.yaml```
